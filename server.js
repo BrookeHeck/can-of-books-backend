@@ -22,11 +22,16 @@ app.get('/', (request, response) => {
   response.status(200).send('Hello from our awesome server');
 });
 
-app.get('/books', (request, response) => {
+app.get('/books', getAllBooks);
 
-  response.send('test request received')
-
-})
+async function getAllBooks(request, response) {
+  try {
+    let allBooks = await Book.find();
+    response.status(200).send(allBooks);
+  } catch(error) {
+    next(error);
+  }
+}
 
 app.get('*', (request, response) => {
   response.status(404).send('Not available');
