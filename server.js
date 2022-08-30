@@ -5,6 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const Book = require('./models/books.js');
+const { response } = require('express');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
@@ -15,6 +16,7 @@ mongoose.connect(process.env.DB_URL);
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const PORT = process.env.PORT || 3002;
 
@@ -32,6 +34,27 @@ async function getAllBooks(request, response) {
     next(error);
   }
 }
+
+app.post('/books', createBook);
+
+async function createBook(request, response) {
+  try {
+    let newBook = await Book.create(request.body);
+    response.status(200).send(newBook);
+  } catch(error) {
+    response.status(500).send('Error creating book');
+  }
+}
+
+app.delete('/books/:id', async (request, response) => {
+  try {
+    await Book.findByIdAndDelete(request.params.id);
+    response.status(200).send('Success');
+  } catch(error) {
+    console.log(error);
+    response.status(500).send(`Cannot delete book with id: ${request.params.id}`);
+  }
+});
 
 app.get('*', (request, response) => {
   response.status(404).send('Not available');
