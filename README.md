@@ -1,44 +1,57 @@
 # Can of Books
 
 **Author**: Jeffrey Smith and Brooke Heck
+
 **Version**: 1.0.0
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+This is a backend server for the Can of Books application. The application uses a database to store different books. The current version only allows users to make get requests and see the books already in the database. The server queries a Mongo database and uses Mongoose to create a book Schema and Model to uniformly stored data.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+Run the npm install command in order to get express, cors, dotenv, and mongoose modules installed in your environment. Also, refer to the sample env file in order to get the database URI and port variables set up.
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+This is an express server and is therefore written in javascript. Cors is another tool used as middleware to help the server send and receive requests. The dotenv module is used to access environment variables from the env file. Finally Mongoose is used to interact with the mongo database. Mongoose is used to connect to the database and create entries that conform to the schema of the books database.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
-
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+08-29-2022 4:59pm - Application successfully connects to the database and creates book entries based on the schema and model defined in books.js. It also sends that data when the server receives a get request.
 
 ## Estimates
 
 ### Lab 11
-*** Name of feature: *** 
+***Name of feature: Create an Express Server*** 
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hr
 
-Start time: _____
+Start time: 1300
 
-Finish time: _____
+Finish time: 1400
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hr
 
-*** Name of feature: ***
+</br>
 
-Estimate of time needed to complete: _____
+***Name of feature: Create a Mongo Database***
 
-Start time: _____
+Estimate of time needed to complete: .5 hr
 
-Finish time: _____
+Start time: 1430
 
-Actual time needed to complete: _____
+Finish time: 1500
+
+Actual time needed to complete: .5 hr
+
+</br>
+
+***Name of feature: Create Schema and Model w/ Mongoose***
+
+Estimate of time needed to complete: 1hr
+
+Start time: 1500
+
+Finish time: 1600
+
+Actual time needed to complete: 1 hr
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+[Collaboration with Jeffrey Smith](https://github.com/Jeffrey-S-Smith)
