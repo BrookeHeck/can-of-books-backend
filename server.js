@@ -61,7 +61,6 @@ app.put('/books/:id', updateBook);
 async function updateBook(request, response, next) {
   try {
     let updatedBook = await Book.findByIdAndUpdate(request.params.id, request.body, {new: true, overwrite: true});
-    console.log(updatedBook);
     response.status(200).send(updatedBook);
   } catch (error) {
     next(error);
