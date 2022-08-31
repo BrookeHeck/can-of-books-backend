@@ -56,6 +56,18 @@ app.delete('/books/:id', async (request, response) => {
   }
 });
 
+app.put('/books/:id', updateBook);
+
+async function updateBook(request, response, next) {
+  try {
+    let updatedBook = await Book.findByIdAndUpdate(request.params.id, request.body, {new: true, overwrite: true});
+    console.log(updatedBook);
+    response.status(200).send(updatedBook);
+  } catch (error) {
+    next(error);
+  }
+}
+
 app.get('*', (request, response) => {
   response.status(404).send('Not available');
 });
